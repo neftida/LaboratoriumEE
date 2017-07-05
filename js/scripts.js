@@ -76,6 +76,7 @@
             var userLoginContainer = document.getElementById("userLogin");
             var userFullNameContainer = document.getElementById("fullUserName");
             var userEmailContainer = document.getElementById("userEmail");
+            var userCityContainer = document.getElementById("userCity");
             var modalLayer = document.getElementById("modalLayer");
             var modalContent = document.getElementById("modalContent");
             if (selectedUser.avatar)
@@ -89,10 +90,24 @@
             modalLayer.style.display = "block";
             modalContent.style.display = "block";
             initMap(selectedUser.coordinates.lat, selectedUser.coordinates.lng);
+            var googleApi = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + selectedUser.coordinates.lat + "," + selectedUser.coordinates.lng + "&sensor=true";
+            get(googleApi).then(function (response) {
+                var data = JSON.parse(response);
+                var city;
+                if (data['results'][0].address_components['1'].long_name) {
+                    city = data['results'][0].address_components['1'].long_name;
+                }
+                else {
+                    city = "-";
+                }
+                userCityContainer.innerHTML = city;
+            }, function (error) {
+                alert("Failed!", error);
+            });
             document.getElementById("closeModal").onclick = function () {
                 modalContent.style.display = "none";
                 modalLayer.style.display = "none";
-                imageContainer.innerHTML = userLoginContainer.innerHTML = userFullNameContainer.innerHTML = "";
+                imageContainer.innerHTML = userLoginContainer.innerHTML = userFullNameContainer.innerHTML = userCityContainer.innerHTML = "";
             }
         };
     };
