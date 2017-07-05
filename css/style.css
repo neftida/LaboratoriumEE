@@ -103,6 +103,10 @@ label {
     min-width:90px;
 }
 
+#modalContent #userAvatar img {
+    min-height:50px;
+}
+
 #modalContent .title {
     font-size: 1.4em;
     font-weight: 600;
