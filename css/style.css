@@ -73,7 +73,7 @@ label {
     top:0;
     left:0;
     z-index: 2;
-    opacity:0.7;
+    opacity:0.9;
     display: none;
 }
 
@@ -103,8 +103,13 @@ label {
     min-width:90px;
 }
 
+#modalContent .title {
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
 #modalContent #closeModal {
-    text-align:right;
+    float: right;
 }
 
 #modalContent #closeModal .fa {
