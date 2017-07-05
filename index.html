@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lista użytkowników</title>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="js/scripts.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="alert alert-info">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-xs-8">Liczba użytkowników:</label>
+                        <div id="allUsers" class="col-xs-4"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-8">Liczba użytkowników aktywnych:</label>
+                        <div id="activeUsers" class="col-xs-4"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-8">Liczba użytkowników, którzy logowali się w ciągu ostatnich 6
+                            miesięcy:</label>
+                        <div id="last6monthLogins" class="col-xs-4"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-xs-8">Liczba aktywnych kobiet:</label>
+                        <div id="activeWomen" class="col-xs-4"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-8">Liczba aktywnych mężczyzn:</label>
+                        <div id="activeMen" class="col-xs-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modalLayer"></div>
+    <div id="modalContent">
+        <div id="closeModal"><i class="fa fa-times" aria-hidden="true"></i></div>
+        <div class="row">
+            <div class="col-md-2">
+                <div id="userAvatar"></div>
+            </div>
+            <div class="col-md-10">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-xs-4">Nazwa użytkownika:</label>
+                        <div id="userLogin" class="col-xs-8"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-4">Imię i nazwisko:</label>
+                        <div id="fullUserName" class="col-xs-8"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-4">E-mail:</label>
+                        <div id="userEmail" class="col-xs-8"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="map"></div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Lista aktywnych użytkowników</div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-condensed table-striped">
+                <thead>
+                <tr>
+                    <th>Lp.</th>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
+                    <th>Nazwa użytkownika</th>
+                </tr>
+                <tbody id="users"></tbody>
+                </thead>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeFe1sQL0Ig-3w_SA8tuYMXS3S_jWqFnU" async defer></script>
+</body>
+</html>
