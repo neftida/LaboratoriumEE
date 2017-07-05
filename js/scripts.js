@@ -3,6 +3,7 @@
     var allUsers, activeUsers, activeWomen, activeMen, last6monthLogins, sortedUsers;
     var jsonURL = "api/users.json";
 
+    // ajax promise
     var get = function (url) {
         return new Promise(function (resolve, reject) {
             var req = new XMLHttpRequest();
@@ -16,12 +17,13 @@
                 }
             };
             req.onerror = function () {
-                reject(Error("Network Error"));
+                reject(Error("Error"));
             };
             req.send();
         });
     };
 
+    // users sorting by name
     var sort = function(users){
         var sorted;
         sorted = users.sort(function(a,b) {
@@ -33,6 +35,7 @@
         return sorted;
     }
 
+    // display google map
     var initMap = function(latitude, longitude) {
         document.getElementById("map").style.display = "none";
         if (latitude && longitude) {
@@ -49,6 +52,7 @@
         }
     }
 
+    // display main data + users list
     var displayData = function () {
         var tableContent = "";
         document.getElementById("allUsers").innerHTML = allUsers.length;
@@ -68,6 +72,7 @@
         document.getElementById("users").innerHTML = tableContent;
     };
 
+    // show modal and display properties
     var showModal = function(row) {
         return function() {
             var id = row.id.split("_")[1];
@@ -112,6 +117,7 @@
         };
     };
 
+    // click event on table rows
     var tableRowHandlers = function() {
         var table = document.getElementById("users");
         var rows = table.getElementsByTagName("tr");
@@ -121,6 +127,7 @@
         }
     }
 
+    // main
     get(jsonURL).then(function (response) {
         allUsers = JSON.parse(response);
         activeUsers = allUsers.filter(entry => entry.active);
